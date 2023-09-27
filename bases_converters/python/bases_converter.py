@@ -111,4 +111,4 @@ class BasesConverter:
 
 if __name__ == "__main__":
     converter = BasesConverter(input="5-154-12-45-12-48", initial_base=176, final_base=176)
-    converter.run_test()
+    print(converter.run_test())

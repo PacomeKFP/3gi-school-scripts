@@ -1,0 +1,21 @@
+```mermaid
+sequenceDiagram
+Participant Client as C 
+Participant Server as S
+
+C->>User: Page displayed!
+
+C->>S: GET / HTTP/1.1
+C->>S: Host: www.google.com
+C->>S: User-Agent: Mozilla/5.0
+
+S-->>C: HTTP/1.1 200 OK
+S-->>C: Content-Type: text/html
+S-->>C: Content-Length: 23600
+S-->>C: 
+S-->>C: <html>
+S-->>C: <!-- code HTML -->
+S-->>C: </html>
+
+C->>C: Render HTML
+```

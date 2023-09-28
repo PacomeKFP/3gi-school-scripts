@@ -1,0 +1,16 @@
+Passons maintenant au 👉 **Eléments de base** 👈 du protocole HTTP ! 
+
+La structure d'une **requête HTTP** contient :
+
+- La ligne de requête avec la méthode, l'URL, la version du protocole
+- Les en-têtes HTTP (User-Agent, Content-Type, etc)
+- Le corps de la requête (données envoyées)
+
+La structure d'une **réponse HTTP** contient :
+
+- La ligne de statut avec la version du protocole, le code de statut 
+- Les en-têtes HTTP (Content-Type, Content-Length, etc) 
+- Le corps de la réponse (page HTML, image, etc)
+
+Les **en-têtes HTTP** permettent d'échanger des informations complémentaires
+ comme le type de contenu, la longueur, l'encoding, etc.

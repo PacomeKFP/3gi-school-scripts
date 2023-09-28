@@ -28,13 +28,13 @@ Bool check_number_validity(int *initial_number, int number_len, int initial_base
     return true;
 }
 
-void display_list_content(int *list, int size)
+void display_list_content(int *list, int size, Bool br)
 {
+
     printf("[");
     for (int i = 0; i < size; i++)
         printf(" %d ", list[i]);
-
-    printf("]\n");
+    br ? printf("]\n") : printf("]");
 }
 
 void duplicate_number(int *original_number, int *number_copy, int number_len)
@@ -55,13 +55,22 @@ void push_front(int *number, int *len, int new_element)
     number[0] = new_element;
     (*len)++;
 }
+void reverse_array(int *array, int array_size)
+{
+    int temp;
+    for (int index = 0; index < (int)(array_size / 2); index++)
+    {
+        temp = array[index];
+        array[index] = array[array_size - index - 1];
+        array[array_size - index - 1] = temp;
+    }
+}
 Bool verify_conversion(int *initial_number, int initial_number_len, int initial_base, int *final_number, int final_number_len, int final_base)
 {
-    //convert the initial number in base 10
+    // convert the initial number in base 10
 
-    //convert the final number in base 10
+    // convert the final number in base 10
 
-
-    //compare the results
+    // compare the results
     return true;
 }

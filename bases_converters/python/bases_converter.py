@@ -10,7 +10,7 @@ class BasesConverter:
         initial_base: int = 10,
         final_base: int = 2,
     ) -> None:
-        self.check_conform_string_as_number(input, separator)
+        self.check_conform_string _as_number(input, separator)
         self.check_base_conformity(input, separator, initial_base)
         self.input = [int(number) for number in input.split(separator)]
         self.separator = separator
@@ -18,13 +18,13 @@ class BasesConverter:
         self.final_base = final_base
         self.output = []
 
-    def check_conform_string_as_number(self, input: str, separator: str) -> bool:
+    def check_conform_string _as_number(self, input: str, separator: str) -> bool:
         if not input.replace(separator, "").isdigit():
             print("l'entrée est incorrecte veillez la modifier")
             self.input = input(
                 f"Entrer la chaine en separant les chiffres par des {separator}: "
             )
-            self.check_conform_string_as_number(self.input, separator)
+            self.check_conform_string _as_number(self.input, separator)
 
     def check_base_conformity(
         self, input: str, separator: str, initial_base: str

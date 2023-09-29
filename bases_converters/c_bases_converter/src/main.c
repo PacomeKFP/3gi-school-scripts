@@ -2,12 +2,12 @@
 
 int main(int argc, char const *argv[])
 {
-    char *separator = "-+*/";
-    int *initial_number =(int*) malloc(sizeof(int));
+    string separator = "-+*/";
+    array initial_number =(int*) malloc(sizeof(int));
     int initial_base = 10;
     int final_base = 2;
     int number_len = 0;
-    char *input = (char *)malloc(MAX_NUMBER_LEN * 2 * sizeof(char));
+    string input = (string )malloc(MAX_NUMBER_LEN * 2 * sizeof(char));
     printf("Veuillez entrer le nombre dans votre base (separatuer de chiffres: %s )\n", separator);
     scanf("%s", input);
     printf("Veuillez entrer la base initiale\n", separator);

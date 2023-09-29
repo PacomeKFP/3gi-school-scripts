@@ -3,25 +3,25 @@
 /**
  * Converts a number from one base to another base.
  *
- * @param initial_number Array containing the digits of the initial number
- * @param initial_number_len Length of the initial number array
+ * @param initial_number array  containing the digits of the initial number
+ * @param initial_number_len Length of the initial number array 
  * @param initial_base Base the initial number is in
- * @param final_number Output array to contain the digits of the final converted number
- * @param final_number_len Output parameter for the length of the final number array
+ * @param final_number Output array  to contain the digits of the final converted number
+ * @param final_number_len Output parameter for the length of the final number array 
  * @param final_base Target base to convert the number to. \n
  *
  * This function takes a number represented in one base (initial_base) and converts it
  * to another base (final_base). It processes each digit of the initial number, divides
  * by the target base to get the converted digit, and builds up the output final number
- * array digit-by-digit. Remainders are tracked and added to the next digit.
+ * array  digit-by-digit. Remainders are tracked and added to the next digit.
  */
-void convert_to_base(int *initial_number, int initial_number_len, int initial_base, int *final_number, int *final_number_len, int final_base)
+void convert_to_base(array initial_number, int initial_number_len, int initial_base, array final_number, int * final_number_len, int final_base)
 {
     /**
      * Duplication of the initial number, we will make all caculations on it
      * This will help avoiding to avoid side-effects
      */
-    int *quotients = (int *)malloc(sizeof(int));
+    array quotients = (array )malloc(sizeof(int));
     duplicate_number(initial_number, quotients, initial_number_len);
 
     *final_number_len = 0;
@@ -55,7 +55,7 @@ void convert_to_base(int *initial_number, int initial_number_len, int initial_ba
                 extended_digit_10 = extended_digit_10 * initial_base + quotients[index];
             }
 
-            /**After the prvious while loop we are sure that:
+            /**After the previous while loop we are sure that:
              * - The extended digit in base 10 is equal or greather than the final_base
              * - If the initial number (in base 10) was less than the `final_base`, the result is given
              * -

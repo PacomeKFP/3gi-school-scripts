@@ -1,14 +1,47 @@
 #include <header.h>
 
+int ascii_char_to_int(char ascii, Bool case_sensible)
+{
+
+    if (ascii >= ASCII_0 && ascii <= ASCII_9)
+        return ascii - ASCII_0;
+
+    Bool is_upper_char = ascii >= ASCII_A && ascii <= ASCII_Z;
+    Bool is_lower_char = ascii >= ASCII_a && ascii <= ASCII_z;
+
+    if (is_upper_char)
+        return ascii - UPPER_A_OFFSET;
+
+    if (is_lower_char && case_sensible)
+        return ascii - LOWER_A_OFFSET;
+
+    return ascii_char_to_int(ascii - ASCII_a_TO_A, false);
+}
+/**
+ * Assert ( 0 <= value <= 62 )
+ */
+char int_to_ascii_char(int value)
+{
+    if (value >= INT_0 && value <= INT_9)
+        return value + ASCII_0;
+
+    Bool is_upper_char = value >= INT_A && value <= INT_Z;
+    Bool is_lower_char = value >= INT_a && value <= INT_z;
+    if (is_upper_char)
+        return value + UPPER_A_OFFSET;
+    if (is_lower_char)
+        return value + LOWER_A_OFFSET;
+}
+
 /**
  * This function helps converting a string like "7-2-4-8-9" into a list of integer representing a number like { 7, 2, 4, 8, 9}
- * 
+ *
  * @param str the initial string representing the number
  * @param numbers the array of int wich will store the final result
  * @param separator The list characters that can be used to separate digits of the number represented as a string (in str)
  * @param size the integet that will store the number of digit contained in the final number after the process.
- * 
- * This function parses the initial string, extract digits (element beetwen 2 separator) and inserts it into the numbes that is considered as the results. It also increment the size of the number 
+ *
+ * This function parses the initial string, extract digits (element beetwen 2 separator) and inserts it into the numbes that is considered as the results. It also increment the size of the number
  */
 void str_to_number_list(string str, array numbers, string separator, int *size)
 {
@@ -16,6 +49,7 @@ void str_to_number_list(string str, array numbers, string separator, int *size)
     string token = strtok(str, separator);
     while (token != NULL)
     {
+        
         numbers[*size] = atoi(token);
         printf("%d", numbers[*size]);
         token = strtok(NULL, separator);
@@ -27,9 +61,9 @@ void str_to_number_list(string str, array numbers, string separator, int *size)
 
 /**
  * This function helps checking if a given number is valid in particular base
- * 
+ *
  * @param initial_number The list of int that represent the intfe
-*/
+ */
 Bool check_number_validity(array initial_number, int number_len, int initial_base)
 {
     for (int index = 0; index < number_len; index++)

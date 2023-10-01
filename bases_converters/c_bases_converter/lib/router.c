@@ -50,4 +50,5 @@ void close_the_app(char *message){
     printf("%s", message);
     presentation();
     system("pause");
+    exit(0);
 }

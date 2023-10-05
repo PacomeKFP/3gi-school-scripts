@@ -19,4 +19,6 @@
 #define LOWER_A_OFFSET 61
 #define ASCII_a_TO_A 32 // The distance beetwen A and a in the ASSCII table
 
+#define INIT_SEPARATOR(X) const string X = "-+*/."
+
 #endif

@@ -1,9 +1,7 @@
 #include "header.h"
 
-
 int main(int argc, char const *argv[])
 {
-    presentation();
     INIT_MENU(menu);
     MenuOption *options;
 
@@ -22,7 +20,6 @@ int main(int argc, char const *argv[])
     hard_conversion.description = "Il s'agit d'une conversion dans les bases quelconques (meme superieures a 36).\n Ici on utilise pas de lettres, les chiffres utilises sont les equivalent en base 10 et les chiffres sont separes des tirets '-' \n Exemples: \n\t5EC (base 16) --> '5-14-12',\n\t '78-30-90' (base 100) --> (78 * 100 + 30) * 100 + 90 (base 10) \n\n";
     hard_conversion.menu_option_handler_callcack = &hard_conversion_handler;
 
-
     add_option_to_menu(&menu, &weak_conversion);
     add_option_to_menu(&menu, &medium_conversion);
     add_option_to_menu(&menu, &hard_conversion);
@@ -30,4 +27,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-

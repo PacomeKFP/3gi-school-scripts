@@ -1,19 +1,15 @@
 #include "header.h"
 
-int main(int argc, char const *argv[])
-{
+    int main(int argc, char const *argv[])
+    {
+        INIT_SEPARATOR(separator);
 
-    Bool tes = true;
-    printf("%d", !tes);
-    // for (int i = 0; i < 62; i++)
-    // {
-    //     int value = 15;
-    //     char int_to_ascii = int_to_ascii_char(i);
-    //     int ascii_to_int = ascii_char_to_int(int_to_ascii, true);
+        string str = "AEF51f";
+        array number = (array)malloc(sizeof(int));
+        int size = 0;
+        str_to_number_list(str, number, "+-*/", &size, MEDIUM_CONVERSION);
+        display_list_content(number, size, true);
+        printf("\nAll is good");
 
-    //     printf("%d --> %c --> %d \n", i, int_to_ascii, ascii_to_int);
-    // }
-    printf("\nAll is good");
-
-    return 0;
-}
+        return 0;
+    }

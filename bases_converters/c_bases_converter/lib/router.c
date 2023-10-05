@@ -15,7 +15,7 @@ void router(Menu menu)
     printf("\n===========================\n");
 
     if (user_choice == 0)
-        close_the_app("Merci bien pour votre participation, j'espere que vous avez été satisfait");
+        close_the_app("Merci bien pour votre participation, j'espere que vous avez ete satisfait");
         for (int i = 0; i < menu.size; i++)
         {
             if (user_choice == menu.options[i].id)
@@ -31,7 +31,9 @@ void router(Menu menu)
         return router(menu);
     }
     // launch the menu option callback
-    menu.options[choosed_option_index].menu_option_handler_callcack();
+    MenuOption choosed_option=  menu.options[choosed_option_index];
+    printf("\n%s\n", choosed_option.description);
+    choosed_option.menu_option_handler_callcack();
     return router(menu);
 }
 

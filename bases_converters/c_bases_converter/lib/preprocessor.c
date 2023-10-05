@@ -1,21 +1,26 @@
 #include <header.h>
 
-int ascii_char_to_int(char ascii, Bool case_sensible)
+void ascii_char_to_int(char ascii, Bool case_sensible, int *answer)
 {
-
-    if (ascii >= ASCII_0 && ascii <= ASCII_9)
-        return ascii - ASCII_0;
-
+    Bool is_digit = ascii >= ASCII_0 && ascii <= ASCII_9;
+    if (is_digit)
+    {
+        *answer = (int)ascii - ASCII_0;
+        return;
+    }
     Bool is_upper_char = ascii >= ASCII_A && ascii <= ASCII_Z;
     Bool is_lower_char = ascii >= ASCII_a && ascii <= ASCII_z;
 
     if (is_upper_char)
-        return ascii - UPPER_A_OFFSET;
+        *answer = ascii - UPPER_A_OFFSET;
 
     if (is_lower_char && case_sensible)
-        return ascii - LOWER_A_OFFSET;
+        *answer = ascii - LOWER_A_OFFSET;
 
-    return ascii_char_to_int(ascii - ASCII_a_TO_A, false);
+    if (is_lower_char && !case_sensible)
+        ascii - ASCII_a_TO_A - UPPER_A_OFFSET;
+
+    // return ascii_char_to_int(ascii - ASCII_a_TO_A, false, answer);
 }
 /**
  * Assert ( 0 <= value <= 62 )
@@ -43,20 +48,32 @@ char int_to_ascii_char(int value)
  *
  * This function parses the initial string, extract digits (element beetwen 2 separator) and inserts it into the numbes that is considered as the results. It also increment the size of the number
  */
-void str_to_number_list(string str, array numbers, string separator, int *size)
+void str_to_number_list(string str, array numbers, const string separator, int *size, ConversionType conversion_type)
 {
     *size = 0;
-    string token = strtok(str, separator);
-    while (token != NULL)
+    if (conversion_type == HARD_CONVERSION)
     {
-        
-        numbers[*size] = atoi(token);
-        printf("%d", numbers[*size]);
-        token = strtok(NULL, separator);
-        *size += 1;
+        string token = strtok(str, "-+*/");
+        while (token != NULL)
+        {
+            numbers[*size] = sscanf(token, "%d", &numbers[*size]);
+            printf("%d", numbers[*size]);
+            token = strtok(NULL, "-+/*");
+            *size += 1;
+        }
+        return;
     }
-    if (*size == -1)
-        *size = 0;
+    *size = strlen(str);
+    for (int i = 0; i < *size; i++)
+        ascii_char_to_int(str[i], conversion_type == MEDIUM_CONVERSION, &numbers[i]);
+
+    return;
+}
+
+void number_list_to_str(array number, int number_len, string result)
+{
+    for (int i = 0; i < number_len; i++)
+        result[i] = int_to_ascii_char(number[i]);
 }
 
 /**
@@ -70,11 +87,11 @@ Bool check_number_validity(array initial_number, int number_len, int initial_bas
     {
         if (initial_number[index] >= initial_base)
         {
-            printf("[❌] Desolé le nombre que vous avez entré n'est pas valide dans cette base");
+            printf("[!!] Desole le nombre que vous avez entre n'est pas valide dans cette base");
             return false;
         }
     }
-    printf("[✅] Le nombre est bien valide dans la base entrée");
+    printf("\n[ok] Le nombre est bien valide dans la base entree\n");
     return true;
 }
 

@@ -33,6 +33,14 @@ typedef struct Menu
     MenuOption *options;
 } Menu;
 
+typedef enum
+{
+    WEAK_CONVERSION,
+    MEDIUM_CONVERSION,
+    HARD_CONVERSION
+} ConversionType;
+
+
 #define INIT_MENU(menu) Menu menu = {.label = "Menu Principal", .size = 0, .options = (MenuOption *)malloc(sizeof(MenuOption))}
 
 #endif

@@ -46,11 +46,7 @@ void convert_to_base(array initial_number, int initial_number_len, int initial_b
                 last_null = index;
                 index++;
                 if (index == initial_number_len)
-                {
-                    final_number[*final_number_len] = extended_digit_10;
-                    *final_number_len++;
-                    return reverse_array(final_number, *final_number_len);
-                }
+                    return push_front(final_number, final_number_len, extended_digit_10);
 
                 extended_digit_10 = extended_digit_10 * initial_base + quotients[index];
             }
@@ -63,10 +59,8 @@ void convert_to_base(array initial_number, int initial_number_len, int initial_b
             remain = extended_digit_10 % final_base;
             index++;
         }
-        final_number[*final_number_len] = extended_digit_10;
-        *final_number_len++;
+        push_front(final_number, final_number_len, remain);
     }
-    return reverse_array(final_number, *final_number_len);
 }
 
 void ensure_digit_greather_than_final_base() {}

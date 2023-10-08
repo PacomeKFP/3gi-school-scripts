@@ -2,7 +2,7 @@
 
 void hello()
 {
-    printf("Yo");
+    printf("Hello from router handler method");
 }
 int main(int argc, char const *argv[])
 {

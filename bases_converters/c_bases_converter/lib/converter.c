@@ -55,7 +55,7 @@ void convert_to_base(array initial_number, int initial_number_len, int initial_b
              * - The extended digit in base 10 is equal or greather than the final_base
              * - If the initial number (in base 10) was less than the `final_base`, the result is given
              */
-            quotients[index] = extended_digit_10 / final_base; // final_base
+            quotients[index] = (int)(extended_digit_10 / final_base); 
             remain = extended_digit_10 % final_base;
             index++;
         }

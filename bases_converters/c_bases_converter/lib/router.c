@@ -1,10 +1,12 @@
 #include "header.h"
+
+#define HORIZONTAL_EQUAL_SEPARATOR() printf("\n===========================\n\n")
 void router(Menu menu)
 {
     int user_choice;
     int choosed_option_index;
     Bool is_valid_choice = false;
-    printf("\n===========================\n\n");
+    HORIZONTAL_EQUAL_SEPARATOR();
     printf("%s \n", menu.label);
     for (int i = 0; i < menu.size; i++)
         printf("\t[%d] - %s \n", menu.options[i].id, menu.options[i].label);
@@ -12,10 +14,10 @@ void router(Menu menu)
     printf("  [0] Pour quitter l'application");
     printf("\n--------------------------\nChoisissez une instruction: ");
     scanf("%d", &user_choice);
-    printf("\n===========================\n");
+    HORIZONTAL_EQUAL_SEPARATOR();
 
     if (user_choice == 0)
-        close_the_app("Merci bien pour votre participation, j'espere que vous avez ete satisfait");
+        close_the_app("\nMerci bien pour votre participation, j'espere que vous avez ete satisfait\n");
         for (int i = 0; i < menu.size; i++)
         {
             if (user_choice == menu.options[i].id)
@@ -32,7 +34,7 @@ void router(Menu menu)
     }
     // launch the menu option callback
     MenuOption choosed_option=  menu.options[choosed_option_index];
-    printf("\n%s\n", choosed_option.description);
+    printf("\n\n%s\n\n", choosed_option.description);
     choosed_option.menu_option_handler_callcack();
     return router(menu);
 }
@@ -45,8 +47,8 @@ void add_option_to_menu(Menu *menu, MenuOption *option)
 
 void presentation(){
     printf("\n\n\n\tCe programme permet de mettre en application \
-    \n\t Les notions de representation de l'information et de changement de base \
-     \n\n\t\t\t AUTHOR : KENGALI FEGUE PACOME - 21P027 - 3GI \n\t ARCHITECTURE DES ORDINATEURS - ENSPY \n"); 
+    \n\t Les notions de representation de l'information et le changement de base \
+     \n\n\t\t\t AUTHOR : KENGALI FEGUE PACOME - 21P027 - 3GI \n\t ARCHITECTURE DES ORDINATEURS - ENSPY \n @: pacomekengafe@gmail.com - Les remarques sont les bienvenues"); 
 }
 void close_the_app(char *message){
     printf("%s", message);

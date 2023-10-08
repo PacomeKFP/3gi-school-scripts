@@ -10,7 +10,6 @@ int main(int argc, char const *argv[])
     int final_base = 9;
 
     convert_to_base(number, initial_len, initial_base, final, &final_len, final_base);
-    printf("\n");
     display_list_content(final, final_len, true);
 
     return 0;

@@ -57,7 +57,6 @@ void str_to_number_list(string str, array numbers, const string separator, int *
         while (token != NULL)
         {
             numbers[*size] = sscanf(token, "%d", &numbers[*size]);
-            printf("%d", numbers[*size]);
             token = strtok(NULL, "-+/*");
             *size += 1;
         }

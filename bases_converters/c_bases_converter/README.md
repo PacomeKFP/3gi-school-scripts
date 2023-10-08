@@ -18,3 +18,12 @@ Le projet comprend les fonctions les fonctions suivantes :
 
 ## Utilisation
 Le programme principal se trouve dans le fichier _**main.c**_. Il demande à l'utilisateur de fournir la base initiale, la base finale et le nombre à convertir. Si le nombre est valide dans la base initiale, on effectue la conversion et on affiche le resultat à l'ecran.
+
+## Compilation
+Pour compiler le programme, il est necessaire d'avoir un compilateur C/C++ tel que gcc.
+Dans notre cas nous utilisons `gcc`, la commande de compilation sera donc 
+> `gcc src\main.c src\menu_handlers.c lib\*.c -o bin/app -I include` 
+
+> Cette commande, à executer à la racine du projet, compilera l'ensemble des fichiers sources du projet et créera un fichier executable dans le dossier **/bin**
+- Si vous etes sous windows, vous avez la possibilité de lancer juste le fichier **`run.bat`** qui contient un script bash permettant de compiler lancer directement l'application.
+- Si vous etes sous windows et ne possedez pas de compilateur, vous a

@@ -5,5 +5,5 @@ ld -m elf_i386 -T link.ld -o iknow/boot/kernel.bin kasm.o kc.o
 qemu-system-i386 -kernel iknow/boot/kernel.bin
 grub-mkrescue -o IKnowOS.iso iknow/
 
-read a #to prevent bash to close after execution
+#read a #to prevent bash to close after execution
 

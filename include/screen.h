@@ -72,7 +72,7 @@ void new_line_check()
         scrool_up(1);
 }
 
-void print_character(char c)
+void print_character(char c, uint8 color)
 {
     string vidmem = (string)0xb8000;
     switch (c)
@@ -96,7 +96,7 @@ void print_character(char c)
         break;
     default:
         vidmem[(cursorY * sw + cursorX) * sd] = c;
-        vidmem[(cursorY * sw + cursorX) * sd + 1] = 0x24;
+        vidmem[(cursorY * sw + cursorX) * sd + 1] = color;
         // the first char control the bg and the second for the fg
         //  TODO customize this method by adding the color as parameter
         cursorX++;
@@ -111,12 +111,14 @@ void print_character(char c)
     update_cursor();
 }
 
-void print(string str)
+void print(string str, bool display_with_colors)
 {
     uint16 i = 0;
+
     for (i = 0; i < str_lenght(str); i++)
     {
-        print_character(str[i]);
+        uint8 color = display_with_colors ? i*i % 256 : 0x0F;
+        print_character(str[i], color);
     }
 }
 

@@ -3,5 +3,5 @@
 kmain()
 {
        clear_screen();
-       print("Hello guys how are you");
+       print("Hello guys how are you", false);
 }

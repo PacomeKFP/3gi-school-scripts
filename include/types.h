@@ -21,4 +21,7 @@ typedef enum bool
     true
 } bool;
 
+#define low_16(adress) (uint16)((adress) & 0xFFFF)
+#define high_16(adress) (uint16)((adress >> 16) & 0xFFFF)
+
 #endif

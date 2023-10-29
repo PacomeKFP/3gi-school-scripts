@@ -1,7 +1,9 @@
 #include "header.h"
 int kmain()
 {
+       isr_install();
        clear_screen();
+       int a = 5/0;
        print("Hello guys, Welcome on IKnowOS\nPlease enter a command\n", false);
        while (1)
        {

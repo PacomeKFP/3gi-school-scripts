@@ -1,29 +1,32 @@
 #include "header.h"
 
-void memory_copy(char *source, char *dest, int n_bytes)
+string read_string()
 {
-    int i;
-    for (i = 0; i < n_bytes; i++)
-        *(dest + i) = *(source + i);
+    string str;
+
+    scanf("%s", str);
+
+    return str;
 }
 
-void memory_set(uint8 *dest, uint8 val, uint32 len)
+string interprete_command()
 {
-    uint8 *temp = (uint8 *)dest;
-    for (; len != 0; len--)
-        *temp++ = val;
 }
-void int_to_ascii(int n, string str)
+string trim(string str)
 {
-    int i, sign;
-    if (sign = (n < 0))
-        n = -n;
-    i = 0;
-    do
+
+    return "trim the string";
+}
+StringList split(string str)
+{
+    INIT_STRING_LIST(result);
+    result[0] = "";
+    for (int i = 0; i < strlen(str); i++)
     {
-        str[i++] = n % 10 + '0';
-    } while ((n /= 10) > 0);
-    if (sign < 0)
-        str[i++] = '-';
-    str[i] = '\0';
+        if (str[i] == " ")
+            result.size++;
+        strcat(result.strings[result.size], str[i])
+    }
+
+    return result;
 }

@@ -1,13 +1,14 @@
-#ifndef HEARDER_H
-#define HEARDER_H
+#ifndef HEADER_H
+#define HEADER_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "types.h"
-#include "keyboard.h"
-#include "string.h"
-#include "system.h"
-#include "screen.h"
-#include "utils.h"
-#include "idt.h"
-#include "isr.h"
 
-#endif // HEARDER_H
+string read_string();
+string interprete_command();
+
+
+
+#endif // HEADER_H

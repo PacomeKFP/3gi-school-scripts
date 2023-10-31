@@ -2,13 +2,10 @@
 #define TYPES_H
 
 typedef char *string;
-typedef struct StringList
+typedef enum bool
 {
-    int size;
-    string *strings;
-} StringList;
-
-#define INIT_STRING_LIST(X) \
-    X = StringList { .size = 0 }
+    false,
+    true
+} bool;
 
 #endif // TYPES_H

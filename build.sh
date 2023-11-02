@@ -1,9 +1,7 @@
 #!/bin/bash
-echo Compilation Started
-gcc main.c lib/*.c -o bin/app.out -I include
-
-echo Running program .....
+echo Starting Compilation
+gcc main.c lib/*.c -o bin/app -I include
+echo Compilation Complete
+echo Starting Execution
 echo
-./bin/app.out
-echo 
-
+./bin/app

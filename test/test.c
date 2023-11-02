@@ -1,27 +1,21 @@
 #include "header.h"
-void splits(string str, string *result, char separator)
-{
-    char *token = strtok(str, &separator);
-    while (token != NULL)
-    {
-        printf("%d ", size_of_string_list(result));
-        result[size_of_string_list(result)] = token;
-        token = strtok(NULL, &separator);
-    }
-}
 
-int main(void)
+int main(int argc, char const *argv[])
 {
-    string *command;
-    char *str = (string)malloc(sizeof(char));
-    while (1)
+    pid_t pid = fork();
+    if (pid < 0)
+        printf("Fork error");
+    if (pid == 0)
     {
-        printf(">> ");
-        scanf(SCAN_STR_REG, str);
-        command = (string *)malloc(sizeof(string));
-        splits(str, command, ' ');
-        run_command(command);
-        clear_buffer();
+        execl("/usr/bin/gedit", "/usr/bin/gedit", "file");
+        clrscr();
+    }
+    if (pid > 0)
+    {
+        string val = (string)malloc(sizeof(char));
+        printf("yo");
+        scanf("%s", val);
+        printf("%s", val);
     }
 
     return 0;

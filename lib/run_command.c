@@ -1,24 +1,21 @@
 #include "header.h"
 
-void run_command(string *command)
+void run_command(string command)
 {
+    if (n_compare(command, "echo"))
+        echo(command + 5);
 
-    printf("running command: %s\n", command[0]);
-    if (strcmp(command[0], "echo") == 0)
-        echo(command);
+    else if (n_compare(command, "clear"))
+        clear();
 
-    else if (strcmp(command[0], "clear") == 0)
-        system("clear");
-
-    else if (strcmp(command[0], "cat") == 0)
+    else if (n_compare(command, "cat"))
         cat(command);
 
-    else if (strcmp(command[0], "exit") == 0)
-    {
-        printf("Exiting...\n");
-        exit(0);
-    }
+    else if (n_compare(command, "ps"))
+        ps();
 
+    else if (n_compare(command, "exit"))
+        close_shell();
     else
-        printf("This command does not exist\n");
+        call_extern(command, false);
 }

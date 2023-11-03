@@ -2,36 +2,17 @@
 #define __HMM_H__
 
 #define HEAP_SIZE 0x1000
-
-typedef enum
-{
-    false,
-    true
-} bool;
-
-typedef struct Heap
-{
-    void *first_address; // the first address returned by the mmap syscall
-    size_t heap_size;
-    size_t n_used_bytes;
-    MemoryChunkList chunks;
-} Heap;
-typedef struct MemoryChunk
-{
-    void *first_adress;
-    int size;
-    bool is_in_use;
-} MemoryChunk;
-
-typedef struct MemoryChunkList
-{
-    MemoryChunk first_chunk;
-    MemoryChunk *next_chunk;
-};
+#include "types.h"
 
 
-void *init();
+// funtions for memory allocation
+void init();
 void *xmalloc(size_t);
 void xfree(size_t);
+
+// // Functions for the memory chunks linked List
+// void add_chunk_to_list(MemoryChunkList *chunk_list, MemoryChunk *chunk);
+// void remove_chunk_from_list(MemoryChunkList *chunk_list, MemoryChunk *chunk);
+
 
 #endif // __HMM_H__

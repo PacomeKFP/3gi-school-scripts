@@ -1,20 +1,31 @@
-#include <stdio.h>
 #include "hmm.h"
+#define SIZE 10
 
 int main(int argc, char const *argv[])
 {
 
-    printf("Hello, World!\n");
-    int *p = xmalloc(8 * sizeof(int));
-    for (int i = 0; i < 8; i++)
+    // create a table, fill it with some data
+    int *table = (int *)xmalloc(SIZE * sizeof(int));
+    for (int i = 0; i < SIZE; i++)
     {
-        *(p + i) = i * i;
+        table[i] = i;
     }
-    for (int i = 0; i < 5; i++)
+
+    // use realloc to add elements to the table
+    table = xrealloc(table, 2 * SIZE * sizeof(int));
+    for (int i = SIZE; i < SIZE * 2; i++)
     {
-        printf("%d ", *(p + i));
+        table[i] = i;
+    }
+
+    // print the content of the table
+    for (int i = 0; i < 2 * SIZE; i++)
+    {
+        printf("%d ", table[i]);
     }
     printf("\n");
+
+    xfree(table);
 
     return 0;
 }

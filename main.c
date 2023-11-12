@@ -11,12 +11,7 @@ int main(int argc, char const *argv[])
         table[i] = i;
     }
 
-    // use realloc to add elements to the table
-    table = xrealloc(table, 2 * SIZE * sizeof(int));
-    for (int i = SIZE; i < SIZE * 2; i++)
-    {
-        table[i] = i;
-    }
+
 
     // print the content of the table
     for (int i = 0; i < 2 * SIZE; i++)
@@ -25,7 +20,6 @@ int main(int argc, char const *argv[])
     }
     printf("\n");
 
-    xfree(table);
 
     return 0;
 }

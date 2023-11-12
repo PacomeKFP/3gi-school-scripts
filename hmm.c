@@ -28,6 +28,7 @@ void *xmalloc(size_t size)
 
 void *xrealloc(void *ptr, size_t size)
 {
+    
     void *address = mmap(ptr, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
     if (address == MAP_FAILED)
     {

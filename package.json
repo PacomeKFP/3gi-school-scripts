@@ -1,7 +1,8 @@
 {
-  "name": "doc-tutorial",
+  "name": "games",
+  "displayName": "Funny Games",
   "version": "1.0.0",
-  "description": "First Electron app",
+  "description": "A Little App to Play Games",
   "main": "main.js",
   "scripts": {
     "dev": "electron .",
@@ -13,7 +14,10 @@
   "keywords": [
     "electron"
   ],
-  "author": "Pacome Kengali Fegue",
+  "author": {
+    "name": "Pacome Kengali Fegue",
+    "email": "pacomekengafe@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",

@@ -18,8 +18,7 @@ module.exports = {
       name: '@electron-forge/maker-deb',
       config: {
         options: {
-          maintainer: 'Joe Bloggs',
-          homepage: 'https://example.com'
+          maintainer: 'Pacome Kengali Fegue',
         }
       }
     }

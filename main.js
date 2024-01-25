@@ -1,10 +1,10 @@
-const { dialog } = require("electron");
 const { app, BrowserWindow, Menu } = require("electron/main");
+const { dialog, ipcMain, MenuItem, nativeImage } = require("electron");
 const path = require("node:path");
 
-let windows;
+let currentWindow;
 
-const createBrowser = () => {
+const createBrowser = (index = "index.html") => {
   const windows = new BrowserWindow({
     width: 800,
     height: 600,
@@ -13,32 +13,42 @@ const createBrowser = () => {
     },
   });
 
-  windows.loadFile("index.html");
-
-  return windows;
+  windows.loadFile(`src/${index}`);
+  currentWindow = windows;
 };
 
-app.whenReady().then(() => {
-  windows = createBrowser();
-});
-
-
-const handler = (event) => {
-    event.preventDefault();
-    const response = dialog.showMessageBox({
-        type: "question",
-        buttons: ["Yes", "No"],
-        message: "Do you want to exit?",
-    });
-    if (response) app.quit();
+const menu = new Menu();
+const navigateTo = (index) => {
+  if (!currentWindow) return;
+  currentWindow.close();
+  createBrowser(index);
 };
+menu.append(
+  new MenuItem({
+    label: "Home",
+    click: () => navigateTo("index.html"),
+  })
+);
+menu.append(
+  new MenuItem({
+    label: "| PPC",
+    click: () => navigateTo("pierrePapierCiseau/index.html"),
+  })
+);
 
-app.on("window-all-closed",handler);
-app.on("before-quit", handler);
-app.on('quit', handler);
+menu.append(
+  new MenuItem({
+    label: "| TodoList",
+    click: () => navigateTo("todolist/index.html"),
+  })
+);
 
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createBrowser();
+// Menu.setApplicationMenu(menu);
+
+app.whenReady().then(createBrowser);
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
 });

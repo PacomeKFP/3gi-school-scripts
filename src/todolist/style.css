@@ -1,0 +1,31 @@
+input#task-label {
+  padding: 6px 2px;
+  line-height: normal;
+  border: none;
+  border-bottom: solid 1px grey;
+}
+div#task-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+div.task-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px; 
+}
+div.task {
+  width: fit-content;
+  display: inline;
+}
+
+button.mark-as-done-btn{
+    background-color: #629c0c;
+    color: white;
+    font-weight: 800;
+    border-color: #6aa80d;
+    padding: 0 5px;
+}
